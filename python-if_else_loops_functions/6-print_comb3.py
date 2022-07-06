@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-for a in range(0, 90):
-    if a != 89:
-        if a % 10 > a / 10:
+for i in range(0, 90):
+    if i != 89:
+        if i % 10 > i / 10:
             print("{02d}".format(i), end=", ")
         else:
-            print("{:d}".format(a))
+            print("{:d}".format(i))
        
