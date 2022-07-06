@@ -1,5 +1,4 @@
 #!/usr/bin/python3
 for i in range(ord('a'), ord('z') +1):
-    d3ng4 = chr(i)
-    if d3ng4 is not "q" and d3ng4 is not "e":
-    print("{:s}".format(d3ng), end="")
+    if chr(a) is not "q" and chr(a) is not "e":
+        print("{:s}".format(chr(a)), end="")
