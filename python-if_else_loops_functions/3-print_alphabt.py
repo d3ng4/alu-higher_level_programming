@@ -2,4 +2,4 @@
 for i in range(ord('a'), ord('z') +1):
     joak = chr(i)
     if joak not in "qe":
-        print("{:s}".format(joak), end="")
+    rint("{:s}".format(joak), end="")
