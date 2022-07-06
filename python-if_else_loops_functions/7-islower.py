@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def islower(c)
-    value = ord(C)
+    value = ord(c)
     if value >= 97 and value <= 122:
         return True
     elif value >= 48 and value <= 57:
