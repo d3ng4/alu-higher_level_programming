@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-import module_test
+__import__("py_print")t
