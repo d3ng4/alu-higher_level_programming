@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    new = ""
+    temp = ''
     for i in my_string:
         if (i.lower()) == 'c':
             continue
-        new += i
-     return new
+        temp += i
+    return temp
