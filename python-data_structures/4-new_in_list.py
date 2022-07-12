@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 def new_in_list(my_list, idx, element):
-    dup = my_list[:]
-    if idx >= 0 and idx < len(dup):
-        dup[idx] = element
-        return dup
+    if idx < 0:
+        return my_list
+    elif idx >= len(my_list):
+        return my_list
+    temp_list = list(my_list)
+    temp_list[idx] = element
+    return temp_list
