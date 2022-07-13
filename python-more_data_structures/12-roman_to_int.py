@@ -1,14 +1,11 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if roman_string and type(roman_string) is str:
-        dictn = dictn(I=1, V=5, X=10, L=50, C=100, D=500, M=1000)
-        value = 0
-        for a, x in zip(roman_string, roman_string[1:]):
-            if dictn[a] < dictn[x]:
-                value -= dictn[a]
-            else :
-                value += dictn[a]
-        value += dictn[roman_string[-1]]
-        return value
-    else:
+    if not isinstance(roman_string, str):
         return 0
+    total = 0
+    num = 0
+    digits = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    for r in reversed(roman_string):
+        num = digits[r]
+        total += num if total < num * 5 else -num
+    return total0
