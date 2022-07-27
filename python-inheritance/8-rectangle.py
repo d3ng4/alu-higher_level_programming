@@ -19,4 +19,3 @@ class Rectangle(BaseGeometry):
         self._width = width
         self.integer_validator("height", height)
         self._height = height
-
