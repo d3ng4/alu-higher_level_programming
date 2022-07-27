@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-odule containing the inherits_from function
+module containing the inherits_from function
 """
 
 
