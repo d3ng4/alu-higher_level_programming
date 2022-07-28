@@ -5,5 +5,5 @@ defines a file appending function
 
 
 def append_write(filename="", text=""):
-    with open(filename, "a", encoding="utf-8") as f:
-        return f.write(text)
+    with open(filename, mode="a", encoding="utf-8") as myFile:
+        return (myFile.write(str(text)))
