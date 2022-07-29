@@ -1,34 +1,43 @@
 #!/usr/bin/python3
 """
-This script parses logs.
+Take stdin and check the input, make some operation on it
 """
+import sys
 
+errorCode = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0,
+}
+numOfLine = 0
+sumSize = 0
 
-res = {"0": 0, "200": 0, "301": 0, "400": 0, "401": 0, "403": 0, "404": 0,
-       "405": 0, "500": 0}
-i = 0
-e = 0
-while True:
-    try:
-        i += 1
-        logs = input()
-        if logs.split(' ')[7] not in res.keys() or e:
-            e = 1
-            continue
-        res[logs.split(' ')[7]] += 1
-        res["0"] += int(logs.split(' ')[8])
-        if i % 10 == 0:
-            for key, value in sorted(res.items()):
-                if key == "0":
-                    print("{}: {:d}".format("File size", value))
-                elif value > 0:
-                    print("{}: {:d}".format(key, value))
-    except (KeyboardInterrupt, EOFError, IndexError):
-        for key, value in sorted(res.items()):
-            if key == "0":
-                print("{}: {:d}".format("File size", value))
-            elif value > 0:
-                print("{}: {:d}".format(key, value))
-        break
-    except Exception:
-        break
+try:
+    for line in sys.stdin:
+        lineToken = line.split()
+        if len(lineToken) >= 2:
+            tmp = numOfLine
+            if lineToken[-2] in errorCode:
+                errorCode[lineToken[-2]] += 1
+            numOfLine += 1
+            sumSize += int(lineToken[-1])
+        if numOfLine % 10 == 0:
+            print("File size: {:d}".format(sumSize))
+            for key, value in sorted(errorCode.items()):
+                if value:
+                    print("{:s}: {:d}".format(key, value))
+    print("File size: {:d}".format(sumSize))
+    for key, value in sorted(errorCode.items()):
+        if value:
+            print("{:s}: {:d}".format(key, value))
+
+except KeyboardInterrupt:
+    print("File size: {:d}".format(sumSize))
+    for key, value in sorted(errorCode.items()):
+        if value:
+            print("{:s}: {:d}".format(key, value))
