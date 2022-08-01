@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import urllib.request
-"""fetches https://intranet.hbtn.io/statua"""
+"""fetches https://intranet.hbtn.io/status"""
 
 
 if __name__ == "__main__":
