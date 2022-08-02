@@ -1,4 +1,4 @@
-#!?usr/bin
+#!/usr/bin/python3
 """takes letter and sends post request to link"""
 import requests
 import sys
