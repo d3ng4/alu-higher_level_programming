@@ -1,2 +1,2 @@
---list Databases using mysql server
+--List Databases
 SHOW DATABASES
