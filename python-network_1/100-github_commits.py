@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Lists the 10 most recent commits on a given GitHub repository.
-Arguments: arg1: repo name, arg2: repo owner
+"""
+script takes 2 args and gets 10 commits
 """
 import sys
 import requests
