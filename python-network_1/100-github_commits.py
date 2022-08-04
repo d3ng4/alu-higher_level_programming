@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""script that takes 2 arguments in order to solve this challenge"""
+"""Lists the 10 most recent commits on a given GitHub repository.
+Arguments: arg1: repo name, arg2: repo owner
+"""
 import sys
 import requests
 
