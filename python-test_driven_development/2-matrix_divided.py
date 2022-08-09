@@ -3,24 +3,26 @@
 
 
 def matrix_divided(matrix, div):
-    """ Divides each element of a matrix by di """
-    if not isinstance(div, (int, float)):
+    """ function """
+    if type(matrix) is not list:
+        raise TypeError("matrix must be a matrix " +
+                        "(list of lists) of integers/floats")
+    sub_l_len = 0
+    for sub_l in matrix:
+        for i in sub_l:
+            if type(i) not in [int, float]:
+                raise TypeError("matrix must be a matrix " +
+                                "(list of lists) of integers/floats")
+
+        if sub_l_len == 0:
+            sub_l_len = len(sub_l)
+        elif sub_l_len != len(sub_l):
+            raise TypeError("Each row of the matrix must have the same size")
+
+    if type(div) not in [int, float]:
         raise TypeError("div must be a number")
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    for lists in matrix:
-        if len(lists) != len(matrix[0]):
-            raise TypeError(mes1)
-        inner_list = []
-        for items in lists:
-            if not isinstance(items, (int, float)):
-                raise TypeError(mes0)
-            else:
-                inner_list.append(round(items / div, 2))
-        res_matrix.append(inner_list)
-
-    return res_matrix
-
-
+    return [[round(i / div, 2) for i in sub_l] for sub_l in matrix]
