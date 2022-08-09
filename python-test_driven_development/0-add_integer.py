@@ -1,11 +1,9 @@
-#!/usr/bin/python
-""" defines `add_integer` """
+#!/usr/bin/python3
+""" adds two integers"""
 
 
-def ad_integer(a, b=98):
-    """ 
-    Check input if correct
-    """
+def add_integer(a, b=98):
+    """ add number """
     if type(a) != int and type(a) != float:
         raise TypeError('a must be an integer')
     elif type(b) != int and type(b) != float:
