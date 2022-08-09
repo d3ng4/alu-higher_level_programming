@@ -6,16 +6,11 @@ This module adds two integers and returns sum of two numbers a & b.
 
 def add_integer(a, b=98):
     """ Returns the sum of a and b
-     a must be an integer or float, and,
+    a must be an integer or float, and,
     b must be an integer or float
     """
-    if type(a) == float or type(b) == float:
-        a = int(a)
-        b = int(b)
-
-    if type(a) != int:
+    if not isinstance(a, int) and not isinstance(a, float):
         raise TypeError("a must be an integer")
-    elif type(b) != int:
-        raise TypeError("b must be an integer")
-    else:
-        return a + b
+    if not isinstance(b, int) and not isinstance(b, float):
+        raise TYpeError("b must be an integer")
+    return (int(a) + int(b))
