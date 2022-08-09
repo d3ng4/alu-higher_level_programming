@@ -1,16 +1,13 @@
-#!/usr/bin/python3
-"""
-This is the 0-add_integer module
-"""
+#!/usr/bin/python
+""" defines `add_integer` """
 
 
-def add_integer(a, b):
-    """ Returns the sum of a and b
-    float("inf")
+def ad_integer(a, b=98):
+    """ 
+    Check input if correct
     """
-    if not isinstance(a, int) and not isinstance(a, float):
-        raise TypeError("a must be an integer")
-    if not isinstance(b, int) and not isinstance(b, float):
-        raise TypeError("b must be an integer")
-    return (int(a) + int(b))
-
+    if type(a) != int and type(a) != float:
+        raise TypeError('a must be an integer')
+    elif type(b) != int and type(b) != float:
+        raise TypeError('b must be an integer')
+    return int(a) + int(b)
