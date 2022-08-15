@@ -1,19 +1,27 @@
 #!/usr/bin/python3
-"""  that takes in arguments and displays all 
-values in the states table of hbtn_0e_0_usa
+"""List all states where 'name' matches the argument
+But this time, one safe from MySQL injection.
+Username, password, database name, and state name given as user args
 """
+import sys
+import MySQLdb
 
 if __name__ == "__main__":
-    from sys import argv
-    import MySQLdb
-    db = MySQLdb.connect(user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3])
-    cr = db.cursor()
-    cr.execute("SELECT * from states WHERE name LIKE %s\
-                ORDER BY states.id", (argv[4],))
-    states = cr.fetchall()
-    for state in states:
+    db = MySQLdb.connect(user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3],
+                         host='localhost',
+                         port=3306)
+    cur = db.cursor()
+    cmd = """SELECT id, name
+         FROM states
+         WHERE name=%s
+         ORDER BY id ASC"""
+    cur.execute(cmd, (sys.argv[4],))
+    nStates = cur.fetchall()
+
+    for state in nStates:
         print(state)
-    cr.close()
+
+    cur.close()
     db.close()
