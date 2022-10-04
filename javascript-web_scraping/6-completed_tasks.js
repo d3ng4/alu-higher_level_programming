@@ -12,4 +12,4 @@ request.get(process.argv[2], function (err, response, body) {
     }
     console.log(done);
   }
-});
+})
