@@ -1,23 +1,45 @@
 #!/usr/bin/node
 const request = require('request');
-const movie = 'http://swapi.co/api/films/';
+const { argv, exit } = require('process');
 
-request.get(movie + process.argv[2], function (err, response, body) {
-  if (err) throw err;
-  if (response.statusCode === 200) {
-    const everything = JSON.parse(body);
-    const listch = [];
-    for (const charac of everything.characters) {
-      listch.push(new Promise(function (resolve, reject) {
-        request.get(charac, function (err, response, body) {
-          if (err) throw err; if (response.statusCode === 200) { resolve(JSON.parse(body).name); } else { reject(Error('Unknown')); }
-        });
-      }));
-    }
-    Promise.all(listch).then(function (names) {
-      names.forEach(function (name) {
-        console.log(name);
+if (argv.length !== 3) {
+  exit(0);
+}
+
+const options = {
+  url: `https://swapi-api.hbtn.io/api/films/${argv[2]}/`,
+  method: 'GET',
+  headers: {
+    'Accept-Charset': 'utf-8'
+  }
+};
+
+function requestStart (optionsUrl, saveValue) {
+  request(optionsUrl, function (err, res, body) {
+    if (err) throw err;
+
+    const characters = JSON.parse(body).characters;
+    const result = {};
+
+    characters.forEach(element => {
+      request(element, function (err, res, _body) {
+        if (err) throw err;
+
+        const name = JSON.parse(_body).name;
+
+        result[element.split('/')[5]] = name;
+        saveValue(result, characters.length);
       });
     });
+  });
+}
+
+let i = 0;
+requestStart(options, function (dict, length) {
+  i++;
+  if (i === length) {
+    for (const name in dict) {
+      console.log(dict[name]);
+    }
   }
 });
